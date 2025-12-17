@@ -69,7 +69,7 @@ epochs = 100000
 
 for epoch in range(epochs):
     layer_hid = sigmoid(np.dot(x,weight_hid))
-    layer_out = sigmoid(np.dot(layer_hid,weight_out))
+    layer_out = softmax(np.dot(layer_hid,weight_out))
     error = (layer_out - y) ** 2
     layer_out_delta = (layer_out - y) / len(layer_out)
     layer_hidden_delta = layer_out_delta.dot(weight_out.T) * sigmoid_deriv(layer_hid)
