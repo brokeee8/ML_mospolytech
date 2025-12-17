@@ -71,7 +71,7 @@ for epoch in range(epochs):
     layer_hid = sigmoid(np.dot(x,weight_hid))
     layer_out = sigmoid(np.dot(layer_hid,weight_out))
     error = (layer_out - y) ** 2
-    layer_out_delta = (layer_out - y) * (layer_out)
+    layer_out_delta = (layer_out - y) / len(layer_out)
     layer_hidden_delta = layer_out_delta.dot(weight_out.T) * sigmoid_deriv(layer_hid)
     weight_out -= learning_rate * layer_hid.T.dot(layer_out_delta)
     weight_hid -= learning_rate * x.T.dot(layer_hidden_delta)
